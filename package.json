@@ -5,7 +5,7 @@
   "main": "build/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "copyfiles main.js app/**/*.* build && babel build/app/**/*.js --presets react --out-dir . && babel *.js build --presets babel-preset-es2015 --out-dir .",
+    "build": "copyfiles main.js app/**/*.* build && babel ./build/**/*.js --presets react --out-dir .",
     "start": "npm run build && electron ./build/main.js"
   },
   "author": "",
