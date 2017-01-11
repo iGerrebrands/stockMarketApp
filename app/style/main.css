@@ -1,0 +1,22 @@
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
+}
+
+.overview {
+    padding: 5px 5px;
+    margin: 0 10px 0 0;
+    border: 1px solid grey;
+    display: inline-block;
+}
+
+.overview-table-tr-col-data {
+    padding: 0 10px;
+}

@@ -11,6 +11,8 @@ export default class App extends React.Component {
         return (
             <div>
                 <Overview id="111"/>
+                <Overview id="123"/>
+                <Overview id="124"/>
             </div>
         );
     }
