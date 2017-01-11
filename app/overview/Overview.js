@@ -5,24 +5,50 @@ export default class Overview extends React.Component {
 
     constructor() {
         super();
-        this.state = { data: "test" };
+        this.state = {
+            stock: {
+                index: 0,
+                buy: 0,
+                sell: 0,
+                percentage: 0
+            }
+        };
         setInterval(() => {
             this.updateLoop();
         }, 1000);
     }
 
     updateLoop() {
-        getStockPriceHTTP("123").then((res) => {
-            const data = JSON.parse(res);
-            this.setState({data: data});
-            console.log(data.Feeds[0]);
-        });
+        getStockPriceHTTP(this.props.id)
+            .then((res) => {
+                const data = JSON.parse(res);
+                this.setState({ stock: {
+                    index: data.Feeds[0].I,
+                    buy: data.Feeds[0].B,
+                    sell: data.Feeds[0].S,
+                    percentage: data.Feeds[0].P
+                }});
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     render() {
         return (
             <div>
-                <h1>{ JSON.stringify(this.state.data) }</h1>
+                <div>
+                    Index: <label>{ this.state.stock.index }</label>
+                </div>
+                <div>
+                    Buy: <label>{ this.state.stock.buy }</label>
+                </div>
+                <div>
+                    Sell: <label>{ this.state.stock.sell }</label>
+                </div>
+                <div>
+                    Percentage: <label>{ this.state.stock.percentage }</label>
+                </div>
             </div>
         );
     }
