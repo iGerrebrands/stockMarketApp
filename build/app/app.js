@@ -8,13 +8,15 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Overview = require('./overview/Overview');
 
-_reactDom2.default.render(_react2.default.createElement(
-  'h1',
-  null,
-  'Hello, world!'
-), document.getElementById('app'));
+var _Overview2 = _interopRequireDefault(_Overview);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+_reactDom2.default.render(_react2.default.createElement(_Overview2.default, null), document.getElementById('app'));
 
 // const rp = require('request-promise');
 // const feeds = [];
