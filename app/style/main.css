@@ -1,0 +1,30 @@
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
+}
+
+.stock-panel-stocks {
+    padding: 5px 0 0 0;
+}
+
+.overview {
+    padding: 5px 5px;
+    margin: 0 10px 0 0;
+    border: 1px solid grey;
+    display: inline-block;
+}
+
+.overview-table-tr-col-label {
+    width: 100px;
+}
+
+.overview-table-tr-col-data {
+    width: 150px;
+}
