@@ -5,7 +5,7 @@ export default class OverviewAdder extends React.Component {
     constructor() {
         super();
         this.state = {
-            index: 123
+            index: 0
         }
     }
 
@@ -23,8 +23,8 @@ export default class OverviewAdder extends React.Component {
         return (
             <div className="overview-adder">
                 <input type="number" className="overview-adder-input" value={this.state.index} onChange={this.handleChange.bind(this)}/>
-                <button onClick={this.handleClick.bind(this)}>Add overview</button>
-                <label>{this.props.message}</label>
+                <button className="overview-adder-button" onClick={this.handleClick.bind(this)}>Add overview</button>
+                <label className="overview-adder-message">{this.props.message}</label>
             </div>
         );
     }
