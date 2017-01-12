@@ -14,6 +14,9 @@ export default class Overview extends React.Component {
             },
             percentageClass: 'black'
         };
+    }
+
+    componentDidMount () {
         setInterval(() => {
             this.updateLoop();
         }, 1000);
@@ -27,7 +30,7 @@ export default class Overview extends React.Component {
                 percentageClass = data.Feeds[0].P === 0 ? "black" : percentageClass;
                 this.setState({
                     stock: {
-                        index: data.Feeds[0].I,
+                        index: this.props.id,
                         buy: data.Feeds[0].B,
                         sell: data.Feeds[0].S,
                         percentage: data.Feeds[0].P
@@ -44,22 +47,24 @@ export default class Overview extends React.Component {
         return (
             <div className="overview">
                 <table className="overview-table">
-                    <tr className="overview-table-tr">
-                        <td className="overview-table-tr-col-label">Index: </td>
-                        <td className="overview-table-tr-col-data">{ this.state.stock.index }</td>
-                    </tr>
-                    <tr className="overview-table-tr">
-                        <td className="overview-table-tr-col-label">Buy: </td>
-                        <td className="overview-table-tr-col-data">{ this.state.stock.buy }</td>
-                    </tr>
-                    <tr className="overview-table-tr">
-                        <td className="overview-table-tr-col-label">Sell: </td>
-                        <td className="overview-table-tr-col-data">{ this.state.stock.sell }</td>
-                    </tr>
-                    <tr className="overview-table-tr">
-                        <td className="overview-table-tr-col-label">Percentage: </td>
-                        <td className={"overview-table-tr-col-data" + ' ' + this.state.percentageClass}>{ this.state.stock.percentage }%</td>
-                    </tr>
+                    <tbody>
+                        <tr className="overview-table-tr">
+                            <td className="overview-table-tr-col-label">Index: </td>
+                            <td className="overview-table-tr-col-data">{ this.state.stock.index }</td>
+                        </tr>
+                        <tr className="overview-table-tr">
+                            <td className="overview-table-tr-col-label">Buy: </td>
+                            <td className="overview-table-tr-col-data">{ this.state.stock.buy }</td>
+                        </tr>
+                        <tr className="overview-table-tr">
+                            <td className="overview-table-tr-col-label">Sell: </td>
+                            <td className="overview-table-tr-col-data">{ this.state.stock.sell }</td>
+                        </tr>
+                        <tr className="overview-table-tr">
+                            <td className="overview-table-tr-col-label">Percentage: </td>
+                            <td className={"overview-table-tr-col-data" + ' ' + this.state.percentageClass}>{ this.state.stock.percentage }%</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         );

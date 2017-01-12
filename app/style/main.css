@@ -17,6 +17,10 @@
     display: inline-block;
 }
 
+.overview-table-tr-col-label {
+    width: 100px;
+}
+
 .overview-table-tr-col-data {
-    padding: 0 10px;
+    width: 100px;
 }
