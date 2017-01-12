@@ -10,6 +10,10 @@
     color: black;
 }
 
+.stock-panel-stocks {
+    padding: 5px 0 0 0;
+}
+
 .overview {
     padding: 5px 5px;
     margin: 0 10px 0 0;

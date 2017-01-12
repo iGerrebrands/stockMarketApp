@@ -1,5 +1,5 @@
 import React from 'react';
-import getStockPriceHTTP from '../models/getStockPriceHTTP';
+import getStockPriceHTTP from '../../models/getStockPriceHTTP';
 
 export default class Overview extends React.Component {
 
