@@ -49,6 +49,10 @@ export default class Overview extends React.Component {
                 <table className="overview-table">
                     <tbody>
                         <tr className="overview-table-tr">
+                            <td className="overview-table-tr-col-label">Name: </td>
+                            <td className="overview-table-tr-col-data">{ this.props.stock.EnglishName }</td>
+                        </tr>
+                        <tr className="overview-table-tr">
                             <td className="overview-table-tr-col-label">Index: </td>
                             <td className="overview-table-tr-col-data">{ this.state.stock.index }</td>
                         </tr>

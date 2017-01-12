@@ -2,38 +2,48 @@ import React from 'react';
 import Overview from './overview/Overview';
 import OverviewAdder from './overview/OverviewAdder';
 import OverviewsModel from './models/OverviewsModel';
-
-//http://www.plus500.nl/Common/InstrumentsLookupHandler.ashx?gid=23&hl=nl&op=Plus500CY
+import AllStockModel from './models/AllStockModel';
 
 export default class App extends React.Component {
 
     constructor() {
         super();
-        this.model = new OverviewsModel();
+        this.models = {
+            overview: new OverviewsModel(),
+            allStocks: new AllStockModel()
+        };
         this.state = {
-            overviews: this.modelToView()
+            overviews: this.modelToView(),
+            message: ""
         };
     }
 
     modelToView() {
         let viewArray = [];
-        this.model.overviews.forEach((id, index) => {
-            viewArray.push(<Overview id={id} key={index} />);
+        this.models.overview.overviews.forEach((id, index) => {
+            viewArray.push(<Overview id={id} stock={this.models.allStocks.getStockById(id)} key={index} />);
         });
         return viewArray;
     }
 
     addOverview(id) {
-        this.model.addOverview(id);
+        if(this.models.allStocks.getStockById(id) === null) {
+            this.setState({
+                message: "This stock does not exist!"
+            });
+            return;
+        }
+        this.models.overview.addOverview(id);
         this.setState({
-            overviews: this.modelToView()
+            overviews: this.modelToView(),
+            message: "Stock added."
         });
     }
 
     render() {
         return (
             <div>
-                <OverviewAdder addOverview={this.addOverview.bind(this)}/>
+                <OverviewAdder addOverview={this.addOverview.bind(this)} message={this.state.message}/>
                 { this.state.overviews }
             </div>
         );
