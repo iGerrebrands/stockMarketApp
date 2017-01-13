@@ -1,17 +1,40 @@
 import React from 'react';
 
+import getAllStockHTTP from '../../models/getAllStocksHTTP';
+
+import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+import AutoComplete from 'material-ui/AutoComplete/AutoComplete';
+
 export default class OverviewAdder extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            index: 0
-        }
+            index: 0,
+            stocks: []
+        };
     }
 
-    handleChange(event) {
+    componentDidMount() {
+        getAllStockHTTP()
+            .then((res) => {
+                const data = JSON.parse(res);
+                this.setState({stocks: data});
+            })
+            .error((error) => {
+                console.error(error);
+            });
+    }
+
+    handleChange(chosenRequest) {
+        if(chosenRequest === null) {
+            this.setState({
+                index: -1
+            });
+            return;
+        }
         this.setState({
-           index: event.target.value
+           index: chosenRequest.Id
         });
     }
 
@@ -22,8 +45,21 @@ export default class OverviewAdder extends React.Component {
     render() {
         return (
             <div className="overview-adder">
-                <input type="number" className="overview-adder-input" value={this.state.index} onChange={this.handleChange.bind(this)}/>
-                <button className="overview-adder-button" onClick={this.handleClick.bind(this)}>Add overview</button>
+                <AutoComplete
+                    hintText="Stock name"
+                    dataSource={this.state.stocks}
+                    maxSearchResults={5}
+                    dataSourceConfig={{
+                        text: 'EnglishName',
+                        value: 'Id'
+                    }}
+                    onNewRequest={this.handleChange.bind(this)}
+                />
+                <RaisedButton
+                    onClick={this.handleClick.bind(this)}
+                    primary={true}
+                    label="Add Stock"
+                />
                 <label className="overview-adder-message">{this.props.message}</label>
             </div>
         );

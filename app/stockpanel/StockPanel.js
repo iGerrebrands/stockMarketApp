@@ -43,7 +43,7 @@ export default class StockPanel extends React.Component {
     render() {
         return (
             <div className="stock-panel">
-                <OverviewAdder addOverview={this.addOverview.bind(this)} message={this.state.message}/>
+                <OverviewAdder addOverview={this.addOverview.bind(this)} message={this.state.message} />
                 <div className="stock-panel-stocks">
                     { this.state.overviews }
                 </div>
