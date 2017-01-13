@@ -1,5 +1,6 @@
 import React from 'react';
 import getStockPriceHTTP from '../../models/getStockPriceHTTP';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 
 export default class Overview extends React.Component {
 
@@ -45,9 +46,10 @@ export default class Overview extends React.Component {
 
     render() {
         return (
-            <div className="overview">
-                <table className="overview-table">
-                    <tbody>
+            <Card>
+                <CardText>
+                    <table>
+                        <tbody>
                         <tr className="overview-table-tr">
                             <td className="overview-table-tr-col-label">Name: </td>
                             <td className="overview-table-tr-col-data">{ this.props.stock.EnglishName }</td>
@@ -68,9 +70,10 @@ export default class Overview extends React.Component {
                             <td className="overview-table-tr-col-label">Percentage: </td>
                             <td className={"overview-table-tr-col-data" + ' ' + this.state.percentageClass}>{ this.state.stock.percentage }%</td>
                         </tr>
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </CardText>
+            </Card>
         );
     }
 
